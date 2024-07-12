@@ -1,1729 +1,489 @@
-<!DOCTYPE html>
-<html lang="zh-Hans" data-theme="light">
-  <head>
-    <!-- hexo injector head_begin start -->
-    <style type="text/css">
-      .douban-card-block {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-height: 400px;
-      }
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
 
-      .douban-card {
-        display: flex;
-        margin: 30px 10px;
-        padding: 15px;
-        border-radius: 15px;
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        color: antiquewhite;
-        text-decoration: none;
-      }
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
 
-      .douban-card:hover {
-        text-decoration: none;
-      }
+.douban-card:hover {
+    text-decoration: none;
+}
 
-      .douban-card-bgimg {
-        position: absolute;
-        width: 115%;
-        height: 115%;
-        filter: blur(15px) brightness(0.6);
-        background-size: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-      .douban-card-img {
-        position: relative;
-        height: 130px;
-        width: 80px;
-        background-size: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-      .douban-card-left:hover .douban-card-img {
-        filter: blur(5px) brightness(0.6);
-        transform: perspective(800px) rotateX(180deg);
-      }
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
 
-      .douban-card-left .douban-card-img {
-        transition: all 500ms ease;
-      }
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
 
-      .douban-card-left {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-      .douban-card-left .douban-card-status {
-        height: 130px;
-        width: 80px;
-        text-align: center;
-        font-weight: bold;
-        position: absolute;
-        left: 0;
-        top: 30%;
-        transform: rotateX(180deg);
-        backface-visibility: hidden;
-        transition: all 500ms ease;
-      }
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
 
-      .douban-card-left:hover .douban-card-status {
-        transform: perspective(800px) rotateX(0deg);
-      }
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
 
-      .douban-card-right {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        margin-left: 12px;
-        font-size: 16px;
-        font-family: "Courier New", Courier, monospace;
-        line-height: 1.3;
-        color: antiquewhite;
-      }
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
 
-      .douban-card-item {
-        margin-top: 4px;
-      }
-    </style>
-    <!-- hexo injector head_begin end -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0,viewport-fit=cover"
-    />
-    <title>Yedou37's Blog</title>
-    <meta name="author" content="Yedou37" />
-    <meta name="copyright" content="Yedou37" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Yedou37&#39;s Blog" />
-    <meta property="og:url" content="https://yedou37.top/index.html" />
-    <meta property="og:site_name" content="Yedou37&#39;s Blog" />
-    <meta property="og:locale" />
-    <meta property="og:image" content="https://yedou37.top/img/avatar.png" />
-    <meta property="article:author" content="Yedou37" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image" content="https://yedou37.top/img/avatar.png" />
-    <link rel="shortcut icon" href="/img/favicon.png" />
-    <link rel="canonical" href="https://yedou37.top/index.html" />
-    <link rel="preconnect" href="//cdn.jsdelivr.net" />
-    <link rel="preconnect" href="//busuanzi.ibruce.info" />
-    <link rel="stylesheet" href="/css/index.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <script>
-      const GLOBAL_CONFIG = {
-        root: "/",
-        algolia: undefined,
-        localSearch: undefined,
-        translate: undefined,
-        noticeOutdate: {
-          limitDay: 365,
-          position: "top",
-          messagePrev: "It has been",
-          messageNext:
-            "days since the last update, the content of the article may be outdated.",
-        },
-        highlight: {
-          plugin: "highlight.js",
-          highlightCopy: true,
-          highlightLang: true,
-          highlightHeightLimit: 200,
-        },
-        copy: {
-          success: "Copy Successful",
-          error: "Copy Error",
-          noSupport: "Browser Not Supported",
-        },
-        relativeDate: {
-          homepage: true,
-          post: true,
-        },
-        runtime: "days",
-        dateSuffix: {
-          just: "Just now",
-          min: "minutes ago",
-          hour: "hours ago",
-          day: "days ago",
-          month: "months ago",
-        },
-        copyright: undefined,
-        lightbox: "fancybox",
-        Snackbar: undefined,
-        infinitegrid: {
-          js: "https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js",
-          buttonText: "Load More",
-        },
-        isPhotoFigcaption: false,
-        islazyload: false,
-        isAnchor: false,
-        percent: {
-          toc: true,
-          rightside: false,
-        },
-        autoDarkmode: true,
-      };
-    </script>
-    <script id="config-diff">
-      var GLOBAL_CONFIG_SITE = {
-        title: "Yedou37's Blog",
-        isPost: false,
-        isHome: true,
-        isHighlightShrink: false,
-        isToc: false,
-        postUpdate: "2024-07-06 09:24:27",
-      };
-    </script>
-    <script>
-      ((win) => {
-        win.saveToLocal = {
-          set: (key, value, ttl) => {
-            if (ttl === 0) return;
-            const now = Date.now();
-            const expiry = now + ttl * 86400000;
-            const item = {
-              value,
-              expiry,
-            };
-            localStorage.setItem(key, JSON.stringify(item));
-          },
-
-          get: (key) => {
-            const itemStr = localStorage.getItem(key);
-
-            if (!itemStr) {
-              return undefined;
-            }
-            const item = JSON.parse(itemStr);
-            const now = Date.now();
-
-            if (now > item.expiry) {
-              localStorage.removeItem(key);
-              return undefined;
-            }
-            return item.value;
-          },
-        };
-
-        win.getScript = (url, attr = {}) =>
-          new Promise((resolve, reject) => {
-            const script = document.createElement("script");
-            script.src = url;
-            script.async = true;
-            script.onerror = reject;
-            script.onload = script.onreadystatechange = function () {
-              const loadState = this.readyState;
-              if (
-                loadState &&
-                loadState !== "loaded" &&
-                loadState !== "complete"
-              )
-                return;
-              script.onload = script.onreadystatechange = null;
-              resolve();
-            };
-
-            Object.keys(attr).forEach((key) => {
-              script.setAttribute(key, attr[key]);
-            });
-
-            document.head.appendChild(script);
-          });
-
-        win.getCSS = (url, id = false) =>
-          new Promise((resolve, reject) => {
-            const link = document.createElement("link");
-            link.rel = "stylesheet";
-            link.href = url;
-            if (id) link.id = id;
-            link.onerror = reject;
-            link.onload = link.onreadystatechange = function () {
-              const loadState = this.readyState;
-              if (
-                loadState &&
-                loadState !== "loaded" &&
-                loadState !== "complete"
-              )
-                return;
-              link.onload = link.onreadystatechange = null;
-              resolve();
-            };
-            document.head.appendChild(link);
-          });
-
-        win.activateDarkMode = () => {
-          document.documentElement.setAttribute("data-theme", "dark");
-          if (document.querySelector('meta[name="theme-color"]') !== null) {
-            document
-              .querySelector('meta[name="theme-color"]')
-              .setAttribute("content", "#0d0d0d");
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end --><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Yedou37's Blog</title><meta name="author" content="Yedou37"><meta name="copyright" content="Yedou37"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Yedou37&#39;s Blog">
+<meta property="og:url" content="https://yedou37.top/index.html">
+<meta property="og:site_name" content="Yedou37&#39;s Blog">
+<meta property="og:locale">
+<meta property="og:image" content="https://yedou37.top/img/avatar.png">
+<meta property="article:author" content="Yedou37">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yedou37.top/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yedou37.top/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: 'days',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Yedou37\'s Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-07-12 12:28:51'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
           }
-        };
-        win.activateLightMode = () => {
-          document.documentElement.setAttribute("data-theme", "light");
-          if (document.querySelector('meta[name="theme-color"]') !== null) {
-            document
-              .querySelector('meta[name="theme-color"]')
-              .setAttribute("content", "#ffffff");
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
           }
-        };
-        const t = saveToLocal.get("theme");
-
-        const isDarkMode = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-        const isLightMode = window.matchMedia(
-          "(prefers-color-scheme: light)"
-        ).matches;
-        const isNotSpecified = window.matchMedia(
-          "(prefers-color-scheme: no-preference)"
-        ).matches;
-        const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified;
-
-        if (t === undefined) {
-          if (isLightMode) activateLightMode();
-          else if (isDarkMode) activateDarkMode();
-          else if (isNotSpecified || hasNoSupport) {
-            const now = new Date();
-            const hour = now.getHours();
-            const isNight = hour <= 6 || hour >= 18;
-            isNight ? activateDarkMode() : activateLightMode();
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
           }
-          window.matchMedia("(prefers-color-scheme: dark)").addListener((e) => {
-            if (saveToLocal.get("theme") === undefined) {
-              e.matches ? activateDarkMode() : activateLightMode();
-            }
-          });
-        } else if (t === "light") activateLightMode();
-        else activateDarkMode();
-
-        const asideStatus = saveToLocal.get("aside-status");
-        if (asideStatus !== undefined) {
-          if (asideStatus === "hide") {
-            document.documentElement.classList.add("hide-aside");
-          } else {
-            document.documentElement.classList.remove("hide-aside");
-          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
         }
 
-        const detectApple = () => {
-          if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-            document.documentElement.classList.add("apple");
-          }
-        };
-        detectApple();
-      })(window);
-    </script>
-    <meta name="generator" content="Hexo 7.2.0" />
-  </head>
-  <body>
-    <script>
-      window.paceOptions = {
-        restartOnPushState: false,
-      };
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
 
-      document.addEventListener("pjax:send", () => {
-        Pace.restart();
-      });
-    </script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script>
-    <div id="sidebar">
-      <div id="menu-mask"></div>
-      <div id="sidebar-menus">
-        <div class="avatar-img is-center">
-          <img
-            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg=="
-            data-original="/img/avatar.png"
-            onerror="onerror=null;src='/img/friend_404.gif'"
-            alt="avatar"
-          />
-        </div>
-        <div class="sidebar-site-data site-data is-center">
-          <a href="/archives/"
-            ><div class="headline">Articles</div>
-            <div class="length-num">13</div></a
-          ><a href="/tags/"
-            ><div class="headline">Tags</div>
-            <div class="length-num">7</div></a
-          ><a href="/categories/"
-            ><div class="headline">Categories</div>
-            <div class="length-num">7</div></a
-          >
-        </div>
-        <hr class="custom-hr" />
-        <div class="menus_items">
-          <div class="menus_item">
-            <a class="site-page" href="/"
-              ><i class="fa-fw fas fa-home"></i><span> 首页</span></a
-            >
-          </div>
-          <div class="menus_item">
-            <a class="site-page" href="/courses/"
-              ><i class="fa-fw fa-solid fa-school"></i><span> 课程学习</span></a
-            >
-          </div>
-          <div class="menus_item">
-            <a class="site-page" href="/tools/"
-              ><i class="fa-fw fa-solid fa-toolbox"></i
-              ><span> 常用工具</span></a
-            >
-          </div>
-          <div class="menus_item">
-            <a class="site-page group" href="javascript:void(0);"
-              ><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span
-              ><i class="fas fa-chevron-down"></i
-            ></a>
-            <ul class="menus_item_child">
-              <li>
-                <a class="site-page child" href="/music/"
-                  ><i class="fa-fw fas fa-music"></i><span> 音乐</span></a
-                >
-              </li>
-              <li>
-                <a class="site-page child" href="/cook/"
-                  ><i class="fa-fw fa-solid fa-bowl-rice"></i
-                  ><span> 做饭</span></a
-                >
-              </li>
-              <li>
-                <a class="site-page child" href="/games/"
-                  ><i class="fa-fw fas fa-brands fa-steam"></i
-                  ><span> 游戏</span></a
-                >
-              </li>
-              <li>
-                <a class="site-page child" href="/movies/"
-                  ><i class="fa-fw fas fa-video"></i><span> 电影</span></a
-                >
-              </li>
-              <li>
-                <a class="site-page child" href="/books/"
-                  ><i class="fa-fw fa-solid fa-book"></i><span> 读书</span></a
-                >
-              </li>
-              <li>
-                <a class="site-page child" href="/MTG/"
-                  ><i class="fa-fw fa-brands fa-wizards-of-the-coast"></i
-                  ><span> MTG</span></a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="menus_item">
-            <a class="site-page" href="/archives/"
-              ><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a
-            >
-          </div>
-          <div class="menus_item">
-            <a class="site-page" href="/tags/"
-              ><i class="fa-fw fas fa-tags"></i><span> 标签</span></a
-            >
-          </div>
-          <div class="menus_item">
-            <a class="site-page" href="/categories/"
-              ><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a
-            >
-          </div>
-          <div class="menus_item">
-            <a class="site-page" href="/link/"
-              ><i class="fa-fw fas fa-link"></i><span> 友链</span></a
-            >
-          </div>
-          <div class="menus_item">
-            <a class="site-page" href="/about/"
-              ><i class="fa-fw fas fa-heart"></i><span> 关于</span></a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="page" id="body-wrap">
-      <header class="full_page" id="page-header">
-        <nav id="nav">
-          <span id="blog-info"
-            ><a href="/" title="Yedou37's Blog"
-              ><span class="site-name">Yedou37's Blog</span></a
-            ></span
-          >
-          <div id="menus">
-            <div class="menus_items">
-              <div class="menus_item">
-                <a class="site-page" href="/"
-                  ><i class="fa-fw fas fa-home"></i><span> 首页</span></a
-                >
-              </div>
-              <div class="menus_item">
-                <a class="site-page" href="/courses/"
-                  ><i class="fa-fw fa-solid fa-school"></i
-                  ><span> 课程学习</span></a
-                >
-              </div>
-              <div class="menus_item">
-                <a class="site-page" href="/tools/"
-                  ><i class="fa-fw fa-solid fa-toolbox"></i
-                  ><span> 常用工具</span></a
-                >
-              </div>
-              <div class="menus_item">
-                <a class="site-page group" href="javascript:void(0);"
-                  ><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span
-                  ><i class="fas fa-chevron-down"></i
-                ></a>
-                <ul class="menus_item_child">
-                  <li>
-                    <a class="site-page child" href="/music/"
-                      ><i class="fa-fw fas fa-music"></i><span> 音乐</span></a
-                    >
-                  </li>
-                  <li>
-                    <a class="site-page child" href="/cook/"
-                      ><i class="fa-fw fa-solid fa-bowl-rice"></i
-                      ><span> 做饭</span></a
-                    >
-                  </li>
-                  <li>
-                    <a class="site-page child" href="/games/"
-                      ><i class="fa-fw fas fa-brands fa-steam"></i
-                      ><span> 游戏</span></a
-                    >
-                  </li>
-                  <li>
-                    <a class="site-page child" href="/movies/"
-                      ><i class="fa-fw fas fa-video"></i><span> 电影</span></a
-                    >
-                  </li>
-                  <li>
-                    <a class="site-page child" href="/books/"
-                      ><i class="fa-fw fa-solid fa-book"></i
-                      ><span> 读书</span></a
-                    >
-                  </li>
-                  <li>
-                    <a class="site-page child" href="/MTG/"
-                      ><i class="fa-fw fa-brands fa-wizards-of-the-coast"></i
-                      ><span> MTG</span></a
-                    >
-                  </li>
-                </ul>
-              </div>
-              <div class="menus_item">
-                <a class="site-page" href="/archives/"
-                  ><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a
-                >
-              </div>
-              <div class="menus_item">
-                <a class="site-page" href="/tags/"
-                  ><i class="fa-fw fas fa-tags"></i><span> 标签</span></a
-                >
-              </div>
-              <div class="menus_item">
-                <a class="site-page" href="/categories/"
-                  ><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a
-                >
-              </div>
-              <div class="menus_item">
-                <a class="site-page" href="/link/"
-                  ><i class="fa-fw fas fa-link"></i><span> 友链</span></a
-                >
-              </div>
-              <div class="menus_item">
-                <a class="site-page" href="/about/"
-                  ><i class="fa-fw fas fa-heart"></i><span> 关于</span></a
-                >
-              </div>
-            </div>
-            <div id="toggle-menu">
-              <a class="site-page" href="javascript:void(0);"
-                ><i class="fas fa-bars fa-fw"></i
-              ></a>
-            </div>
-          </div>
-        </nav>
-        <div id="site-info">
-          <h1 id="site-title">Yedou37's Blog</h1>
-          <div id="site-subtitle"><span id="subtitle"></span></div>
-        </div>
-        <div id="scroll-down">
-          <i class="fas fa-angle-down scroll-down-effects"></i>
-        </div>
-      </header>
-      <main class="layout" id="content-inner">
-        <div class="recent-posts" id="recent-posts">
-          <div class="recent-post-item">
-            <div class="recent-post-info no-cover">
-              <a
-                class="article-title"
-                href="/post/undefined.html"
-                title="2024春夏-大学物理（乙）I"
-                >2024春夏-大学物理（乙）I</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-25T03:41:06.000Z"
-                    title="Created 2024-06-25 11:41:06"
-                    >2024-06-25</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-06-26T02:40:09.315Z"
-                    title="Updated 2024-06-26 10:40:09"
-                    >2024-06-26</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Study/"
-                    >Study</a
-                  ><i class="fas fa-angle-right article-meta-link"></i
-                  ><i class="fas fa-inbox"></i
-                  ><a
-                    class="article-meta__categories"
-                    href="/categories/Study/Course/"
-                    >Course</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Study/">Study</a
-                  ><span class="article-meta-link">•</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Course/"
-                    >Course</a
-                  ></span
-                >
-              </div>
-              <div class="content">
-                静电场 库仑定律 F=kq1q2r2,k=14πε0F = k \frac{q_1 q_2}{r^2} ,k =
-                \frac{1}{4\pi \varepsilon_0} F=kr2q1​q2​​,k=4πε0​1​
-                电荷可以表示为体密度、面密度、线密度 电场强度
-                放在该点的单位点电荷所受的力 E⃗=F⃗q0=14πε0qr2r⃗\vec E=\frac{\vec
-                F}{q_{0}}=\frac{1}{4\pi \varepsilon_0}\frac{q}{r^{2}}\vec r
-                E=q0​F​=4πε0​1​r2q​r 电偶极子 两个等值异号的电荷所组成的系统
-                电偶极矩 p⃗=q⋅l⃗\vec p=q\cdot \vec lp​=q⋅l
-                方向从负电荷指向正电荷 实际计算时 l 相比于 r 可以忽略
-                几个电场强度有关的结论
-                无限长均匀带电细棒外一点的场强Ey=λ2πε0r,Ex=0E_{y} =
-                \frac{\lambda}{2\pi\varepsilon_0 r},E_{x}=0 Ey​=2πε0​rλ​,Ex​=0
-                半无限长的均匀带电细棒 在端点处垂直于细棒位置的场强Ey=λ ...
-              </div>
-            </div>
-          </div>
-          <div class="recent-post-item">
-            <div class="recent-post-info no-cover">
-              <a
-                class="article-title"
-                href="/post/undefined.html"
-                title="2024春夏-微积分（甲）II"
-                >2024春夏-微积分（甲）II</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-25T03:40:51.000Z"
-                    title="Created 2024-06-25 11:40:51"
-                    >2024-06-25</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-06-29T05:31:59.490Z"
-                    title="Updated 2024-06-29 13:31:59"
-                    >2024-06-29</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Study/"
-                    >Study</a
-                  ><i class="fas fa-angle-right article-meta-link"></i
-                  ><i class="fas fa-inbox"></i
-                  ><a
-                    class="article-meta__categories"
-                    href="/categories/Study/Course/"
-                    >Course</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Study/">Study</a
-                  ><span class="article-meta-link">•</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Course/">Course</a
-                  ><span class="article-meta-link">•</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Math/"
-                    >Math</a
-                  ></span
-                >
-              </div>
-              <div class="content">
-                教师: 张泽银 TA: 陈浩鹏
-                助教是真爹！平时分基本给满，小测会调分，只有在三次小测时点名。作业交够即可（我最后一周上交了一个学期的作业
-                ━━(￣ー￣*|||━━
-                虽然自认为对于这部分微积分的内容理解没有十分透彻，但好在对于各种概念和题型比较熟悉。最后成绩真的出乎意料。
-                如果功利地说，只死记硬背各种公式和题目模板可以应对考试。但经过这学期微积分的学习，我对空间和场确实有了更深层次的认识。
-                求某点的方向导数 求某点的偏导数 判断某点是否可微 方向导数
-                方向导数的定义
-                在该点的梯度不好求的时候使用Duf=lim⁡h→0f(x0+ah,y0+bh,z0+ch)−f(x0,y0,z0)hD_u
-                f = \lim_{h \to 0} \frac{f(x_0 + ah, y_0 + bh, z_0 + ch) -
-                f(x_0, y_0, z_0)}{h}
-                Du​f=h→0lim​hf(x0​+ah,y0​+bh,z0​+ch)−f(x0​,y0​,z0​)​
-                该点的梯度乘上方向向量（单位）Duf=∇f⋅uD_u f = \nabla f \cdot u
-                Du​f=∇f⋅u 偏导数（定 ...
-              </div>
-            </div>
-          </div>
-          <div class="recent-post-item">
-            <div class="recent-post-info no-cover">
-              <a
-                class="article-title"
-                href="/post/undefined.html"
-                title="2024春夏-离散数学"
-                >2024春夏-离散数学</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-25T03:40:30.000Z"
-                    title="Created 2024-06-25 11:40:30"
-                    >2024-06-25</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-06-28T13:52:34.678Z"
-                    title="Updated 2024-06-28 21:52:34"
-                    >2024-06-28</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Study/"
-                    >Study</a
-                  ><i class="fas fa-angle-right article-meta-link"></i
-                  ><i class="fas fa-inbox"></i
-                  ><a
-                    class="article-meta__categories"
-                    href="/categories/Study/Course/"
-                    >Course</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Study/">Study</a
-                  ><span class="article-meta-link">•</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Course/">Course</a
-                  ><span class="article-meta-link">•</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Math/"
-                    >Math</a
-                  ></span
-                >
-              </div>
-              <div class="content">
-                Logic and Proofs Propositional Equivalences
-                p→q≡¬p∨qp\rightarrow{q}\equiv\neg{p}\lor{q}p→q≡¬p∨q
-                p↔q≡(p→q)∧(q→p)p\leftrightarrow{q}\equiv(p\rightarrow{q})\land(q\rightarrow{p})p↔q≡(p→q)∧(q→p)
-                De Morgan’s Laws ¬(P∧Q)≡¬P∨¬Q\neg (P \land Q) \equiv \neg P \lor
-                \neg Q¬(P∧Q)≡¬P∨¬Q ¬(P∨Q)≡¬P∧¬Q\neg (P \lor Q) \equiv \neg P
-                \land \neg Q¬(P∨Q)≡¬P∧¬Q proof: truth table e.g. Translating
-                Sentence e.g. Logic Puzzle e.g. fCNF and fDNF 方法一
-                用德摩根律和→\rightarrow→ 的规则化简 然后缺少元素的化可以
-                disjunct 一个P∧¬PP \land \neg PP∧¬P ...
-              </div>
-            </div>
-          </div>
-          <div class="recent-post-item">
-            <div class="recent-post-info no-cover">
-              <a
-                class="article-title"
-                href="/post/undefined.html"
-                title="hexo+butterfly建站中遇到的问题&amp;解决/魔改"
-                >hexo+butterfly建站中遇到的问题&amp;解决/魔改</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-22T12:04:39.000Z"
-                    title="Created 2024-06-22 20:04:39"
-                    >2024-06-22</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-06-26T06:02:21.221Z"
-                    title="Updated 2024-06-26 14:02:21"
-                    >2024-06-26</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a
-                    class="article-meta__categories"
-                    href="/categories/Coding/"
-                    >Coding</a
-                  ><i class="fas fa-angle-right article-meta-link"></i
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Study/"
-                    >Study</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Study/">Study</a
-                  ><span class="article-meta-link">•</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Coding/"
-                    >Coding</a
-                  ></span
-                >
-              </div>
-              <div class="content">
-                网页中用 URL 加载豆瓣图片被拒绝(403) 在豆瓣上爬取电影海报图片的
-                URL，通过链接直接访问可以正常加载 但是使用 butterfly
-                主题的友链卡片功能(js+html)时无法加载图片
-                原因是网站设置了防盗链的策略，会在后台判断请求的 Referrer
-                属性是不是来自于一个非本域名的网站，如果来源不是本域名就返回 403
-                forbidden。 解决： 修改 butterfly 主题下 friendship link 的 js
-                脚本 node_modules\hexo-theme-butterfly\scripts\tag\flink.js
-                12345678910111213141516i.link_list.forEach((j) =&gt; &#123;
-                listResult += ` &lt;div class=&quot;flink-list-item&quot;&gt;
-                &lt;a href=&quot;$&#123;j.link&#125;&quot;
-                title=&quot;$&#123;j.name&#125;&quot ...
-              </div>
-            </div>
-          </div>
-          <div class="recent-post-item">
-            <div class="post_cover left">
-              <a href="/post/undefined.html" title="心灵奇旅"
-                ><img
-                  class="post-bg"
-                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg=="
-                  data-original="https://s2.loli.net/2024/06/17/47Zmr3N12MqJ5QG.jpg"
-                  onerror="this.onerror=null;this.src='/img/404.jpg'"
-                  alt="心灵奇旅"
-              /></a>
-            </div>
-            <div class="recent-post-info">
-              <a
-                class="article-title"
-                href="/post/undefined.html"
-                title="心灵奇旅"
-                >心灵奇旅</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-15T12:54:21.000Z"
-                    title="Created 2024-06-15 20:54:21"
-                    >2024-06-15</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-06-17T14:22:39.958Z"
-                    title="Updated 2024-06-17 22:22:39"
-                    >2024-06-17</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a
-                    class="article-meta__categories"
-                    href="/categories/Movies/"
-                    >Movies</a
-                  ><i class="fas fa-angle-right article-meta-link"></i
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Life/"
-                    >Life</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Movies/"
-                    >Movies</a
-                  ></span
-                >
-              </div>
-              <div class="content">
-                灯影绰约 电影名: 心灵奇旅Soul(2020) 导演:
-                彼特·道格特/凯普·鲍尔斯 主演: 杰米·福克斯/蒂娜·菲 上映时间:
-                2020-12-25(中国大陆/美国网络) 评分: 8.7 ★★★★★
-                个主角和你一样平凡。乔伊，一个黑人音乐教师，抱有音乐家的梦想，却囿于学校音乐教室担任一份并不重要的工作，和根本不爱音乐的孩子们在一起度过一日又一日，才勉强得到一个被恩赐的“铁饭碗”。
-                他的母亲可能和你的母亲一样。嫌弃你年过三十都没有稳定的工作，依然要靠她这半生辛劳才能换得你相对的稳定。而你漂泊那么久好不容易获得一份有社保的工作后还要和她提什么梦想，她只能把眼前所做的一切奉献展示给你，让你望而却步。
-                我甚至觉得创作者残酷。毕竟乔伊身为平凡人活着时还有一份执念，要做一名爵士音乐家，至少在梦想的舞台上发光，哪怕只有
-                ...
-              </div>
-            </div>
-          </div>
-          <div class="recent-post-item">
-            <div class="post_cover right">
-              <a href="/post/undefined.html" title="星球大战前传3：西斯的反击"
-                ><img
-                  class="post-bg"
-                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg=="
-                  data-original="https://s2.loli.net/2024/06/17/jb2QGXAvhIRO4lo.jpg"
-                  onerror="this.onerror=null;this.src='/img/404.jpg'"
-                  alt="星球大战前传3：西斯的反击"
-              /></a>
-            </div>
-            <div class="recent-post-info">
-              <a
-                class="article-title"
-                href="/post/undefined.html"
-                title="星球大战前传3：西斯的反击"
-                >星球大战前传3：西斯的反击</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-15T12:37:21.000Z"
-                    title="Created 2024-06-15 20:37:21"
-                    >2024-06-15</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-06-17T13:47:22.963Z"
-                    title="Updated 2024-06-17 21:47:22"
-                    >2024-06-17</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a
-                    class="article-meta__categories"
-                    href="/categories/Movies/"
-                    >Movies</a
-                  ><i class="fas fa-angle-right article-meta-link"></i
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Life/"
-                    >Life</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Movies/"
-                    >Movies</a
-                  ></span
-                >
-              </div>
-              <div class="content">
-                灯影绰约 电影名:
-                星球大战前传3：西斯的反击StarWars:EpisodeIII-RevengeoftheSith(2005)
-                导演: 乔治·卢卡斯 主演: 伊万·麦克格雷格/娜塔莉·波特曼 上映时间:
-                2005-05-20(中国大陆) 评分: 8.5
-                开篇太空战的场景在现在看来仍不过时 Anakin的堕落 you have become
-                the very thing you swore to destroy
-                西斯铺垫两部电影的阴谋终于得逞从银河共和国走向银河帝国莫名联想到
-                克拉苏、庞培、凯撒三头同盟架空元老院，一步步让罗马从共和走向了帝制在人们雷鸣般的掌声中，自由“死亡”了
-                so this is how liberty dies, with thunders of applause
-              </div>
-            </div>
-          </div>
-          <div class="recent-post-item">
-            <div class="post_cover left">
-              <a href="/post/undefined.html" title="星球大战前传2：克隆人的进攻"
-                ><img
-                  class="post-bg"
-                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg=="
-                  data-original="https://s2.loli.net/2024/06/17/JUPuxWipmbdBzA2.jpg"
-                  onerror="this.onerror=null;this.src='/img/404.jpg'"
-                  alt="星球大战前传2：克隆人的进攻"
-              /></a>
-            </div>
-            <div class="recent-post-info">
-              <a
-                class="article-title"
-                href="/post/undefined.html"
-                title="星球大战前传2：克隆人的进攻"
-                >星球大战前传2：克隆人的进攻</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-15T12:37:18.000Z"
-                    title="Created 2024-06-15 20:37:18"
-                    >2024-06-15</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-06-17T11:52:36.801Z"
-                    title="Updated 2024-06-17 19:52:36"
-                    >2024-06-17</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a
-                    class="article-meta__categories"
-                    href="/categories/Movies/"
-                    >Movies</a
-                  ><i class="fas fa-angle-right article-meta-link"></i
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Life/"
-                    >Life</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Movies/"
-                    >Movies</a
-                  ></span
-                >
-              </div>
-              <div class="content">
-                灯影绰约 电影名:
-                星球大战前传2：克隆人的进攻StarWars:EpisodeII-AttackoftheClones(2002)
-                导演: 乔治·卢卡斯 主演: 伊万·麦克格雷格/娜塔莉·波特曼 上映时间:
-                2002-07-12(中国大陆) 评分: 8.1
-                描绘了吉奥诺西斯战役中无比宏大的战争场面塑造了经久不衰的克隆人形象给当时我“幼小的心灵”以极大的震撼为母亲报仇而杀光全村的人Anakin
-                从光明面堕入黑暗面的前兆悔恨 复仇绝地信条的刻板迂腐也被逐渐揭露
-                年轻的 Anakin Skywalker
-                在失去母亲、屠杀整个沙漠族复仇以后，倍受恐惧和仇恨的煎熬。
-                他对爱人 Padmé 说： “Life seems so much simpler when you’re
-                fixing things. I’m go ...
-              </div>
-            </div>
-          </div>
-          <div class="recent-post-item">
-            <div class="post_cover right">
-              <a href="/post/undefined.html" title="星球大战前传1：幽灵的威胁"
-                ><img
-                  class="post-bg"
-                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg=="
-                  data-original="https://s2.loli.net/2024/06/17/UoEHG9CcbF4zOjy.jpg"
-                  onerror="this.onerror=null;this.src='/img/404.jpg'"
-                  alt="星球大战前传1：幽灵的威胁"
-              /></a>
-            </div>
-            <div class="recent-post-info">
-              <a
-                class="article-title"
-                href="/post/undefined.html"
-                title="星球大战前传1：幽灵的威胁"
-                >星球大战前传1：幽灵的威胁</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-15T12:37:18.000Z"
-                    title="Created 2024-06-15 20:37:18"
-                    >2024-06-15</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-06-17T11:37:30.625Z"
-                    title="Updated 2024-06-17 19:37:30"
-                    >2024-06-17</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a
-                    class="article-meta__categories"
-                    href="/categories/Movies/"
-                    >Movies</a
-                  ><i class="fas fa-angle-right article-meta-link"></i
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Life/"
-                    >Life</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Movies/"
-                    >Movies</a
-                  ></span
-                >
-              </div>
-              <div class="content">
-                灯影绰约 电影名:
-                星球大战前传1：幽灵的威胁StarWars:EpisodeI-ThePhantomMenace(1999)
-                导演: 乔治·卢卡斯 主演: 连姆·尼森/伊万·麦克格雷格 上映时间:
-                1999-11-05(中国大陆) 评分: 8.2
-                还记得上小学时候的周末，当父亲打开电视，伴随着经典的Main
-                Tittle一扇科幻的大门打开了 A long time ago in a galaxy far, far
-                away… 小小的电视里，装着整个银河魁刚 欧比旺 Anakin
-                Padmé这里有千奇百怪，性格迥异的人光剑 飞船
-                战斗机器人从塔图因到科洛桑
-                从沙漠到深海再到城市人类想象力所创造的世界原来可以这么丰富
-              </div>
-            </div>
-          </div>
-          <div class="recent-post-item">
-            <div class="recent-post-info no-cover">
-              <a class="article-title" href="/post/undefined.html" title="RE4re"
-                >RE4re</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-11T14:29:26.000Z"
-                    title="Created 2024-06-11 22:29:26"
-                    >2024-06-11</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-06-13T02:13:58.065Z"
-                    title="Updated 2024-06-13 10:13:58"
-                    >2024-06-13</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Games/"
-                    >Games</a
-                  ><i class="fas fa-angle-right article-meta-link"></i
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/Life/"
-                    >Life</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/Games/"
-                    >Games</a
-                  ></span
-                >
-              </div>
-              <div class="content"></div>
-            </div>
-          </div>
-          <div class="recent-post-item">
-            <div class="recent-post-info no-cover">
-              <a class="article-title" href="/post/177d99cd.html" title="孙楠"
-                >孙楠</a
-              >
-              <div class="article-meta-wrap">
-                <span class="post-meta-date"
-                  ><i class="far fa-calendar-alt"></i
-                  ><span class="article-meta-label">Created</span
-                  ><time
-                    class="post-meta-date-created"
-                    datetime="2024-06-10T13:19:44.000Z"
-                    title="Created 2024-06-10 21:19:44"
-                    >2024-06-10</time
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-history"></i
-                  ><span class="article-meta-label">Updated</span
-                  ><time
-                    class="post-meta-date-updated"
-                    datetime="2024-07-06T01:23:32.899Z"
-                    title="Updated 2024-07-06 09:23:32"
-                    >2024-07-06</time
-                  ></span
-                ><span class="article-meta"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-inbox"></i
-                  ><a class="article-meta__categories" href="/categories/music/"
-                    >music</a
-                  ></span
-                ><span class="article-meta tags"
-                  ><span class="article-meta-separator">|</span
-                  ><i class="fas fa-tag"></i
-                  ><a class="article-meta__tags" href="/tags/music/"
-                    >music</a
-                  ></span
-                >
-              </div>
-              <div class="content">
-                .rounded-title { color: gray; border-radius: 10px; padding: 10px
-                20px; text-align: center; display: inline-block; box-shadow: 0
-                4px 6px rgba(0, 0, 0, 0.1); filter: invert(100%); /*
-                根据系统设置自动转换黑白 */ font-size: 30px; }
-                无名的人【声生不息】- 陈楚生 孙楠
-                致所有顶天立地却平凡普通的无名的人 无名的人啊 我敬你一杯酒
-                敬你的沉默 和每一声怒吼 敬你弯着腰 上山往高处走 头顶 苍穹
-                努力地生活 人世间【声生不息3】- 韩红 孙楠 孙楠+韩红
-                无可挑剔的演唱和和声 无敌 B4 也祝你不忘少年样 也 ...
-              </div>
-            </div>
-          </div>
-          <nav id="pagination">
-            <div class="pagination">
-              <span class="page-number current">1</span
-              ><a class="page-number" href="/page/2/#content-inner">2</a
-              ><a class="extend next" rel="next" href="/page/2/#content-inner"
-                ><i class="fas fa-chevron-right fa-fw"></i
-              ></a>
-            </div>
-          </nav>
-        </div>
-        <div class="aside-content" id="aside-content">
-          <div class="card-widget card-info">
-            <div class="is-center">
-              <div class="avatar-img">
-                <img
-                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg=="
-                  data-original="/img/avatar.png"
-                  onerror="this.onerror=null;this.src='/img/friend_404.gif'"
-                  alt="avatar"
-                />
-              </div>
-              <div class="author-info__name">Yedou37</div>
-              <div class="author-info__description"></div>
-            </div>
-            <div class="card-info-data site-data is-center">
-              <a href="/archives/"
-                ><div class="headline">Articles</div>
-                <div class="length-num">13</div></a
-              ><a href="/tags/"
-                ><div class="headline">Tags</div>
-                <div class="length-num">7</div></a
-              ><a href="/categories/"
-                ><div class="headline">Categories</div>
-                <div class="length-num">7</div></a
-              >
-            </div>
-            <a
-              id="card-info-btn"
-              target="_blank"
-              rel="noopener"
-              href="https://github.com/yedou37"
-              ><i class="fab fa-github"></i><span>Follow Me</span></a
-            >
-          </div>
-          <div class="sticky_layout">
-            <div class="card-widget card-recent-post">
-              <div class="item-headline">
-                <i class="fas fa-history"></i><span>Recent Post</span>
-              </div>
-              <div class="aside-list">
-                <div class="aside-list-item no-cover">
-                  <div class="content">
-                    <a
-                      class="title"
-                      href="/post/undefined.html"
-                      title="2024春夏-大学物理（乙）I"
-                      >2024春夏-大学物理（乙）I</a
-                    ><time
-                      datetime="2024-06-25T03:41:06.000Z"
-                      title="Created 2024-06-25 11:41:06"
-                      >2024-06-25</time
-                    >
-                  </div>
-                </div>
-                <div class="aside-list-item no-cover">
-                  <div class="content">
-                    <a
-                      class="title"
-                      href="/post/undefined.html"
-                      title="2024春夏-微积分（甲）II"
-                      >2024春夏-微积分（甲）II</a
-                    ><time
-                      datetime="2024-06-25T03:40:51.000Z"
-                      title="Created 2024-06-25 11:40:51"
-                      >2024-06-25</time
-                    >
-                  </div>
-                </div>
-                <div class="aside-list-item no-cover">
-                  <div class="content">
-                    <a
-                      class="title"
-                      href="/post/undefined.html"
-                      title="2024春夏-离散数学"
-                      >2024春夏-离散数学</a
-                    ><time
-                      datetime="2024-06-25T03:40:30.000Z"
-                      title="Created 2024-06-25 11:40:30"
-                      >2024-06-25</time
-                    >
-                  </div>
-                </div>
-                <div class="aside-list-item no-cover">
-                  <div class="content">
-                    <a
-                      class="title"
-                      href="/post/undefined.html"
-                      title="hexo+butterfly建站中遇到的问题&amp;解决/魔改"
-                      >hexo+butterfly建站中遇到的问题&amp;解决/魔改</a
-                    ><time
-                      datetime="2024-06-22T12:04:39.000Z"
-                      title="Created 2024-06-22 20:04:39"
-                      >2024-06-22</time
-                    >
-                  </div>
-                </div>
-                <div class="aside-list-item">
-                  <a
-                    class="thumbnail"
-                    href="/post/undefined.html"
-                    title="心灵奇旅"
-                    ><img
-                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg=="
-                      data-original="https://s2.loli.net/2024/06/17/47Zmr3N12MqJ5QG.jpg"
-                      onerror="this.onerror=null;this.src='/img/404.jpg'"
-                      alt="心灵奇旅"
-                  /></a>
-                  <div class="content">
-                    <a
-                      class="title"
-                      href="/post/undefined.html"
-                      title="心灵奇旅"
-                      >心灵奇旅</a
-                    ><time
-                      datetime="2024-06-15T12:54:21.000Z"
-                      title="Created 2024-06-15 20:54:21"
-                      >2024-06-15</time
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-widget card-categories">
-              <div class="item-headline">
-                <i class="fas fa-folder-open"></i>
-                <span>Categories</span>
-              </div>
-              <ul class="card-category-list" id="aside-cat-list">
-                <li class="card-category-list-item">
-                  <a class="card-category-list-link" href="/categories/Coding/"
-                    ><span class="card-category-list-name">Coding</span
-                    ><span class="card-category-list-count">1</span></a
-                  >
-                </li>
-                <li class="card-category-list-item">
-                  <a class="card-category-list-link" href="/categories/Games/"
-                    ><span class="card-category-list-name">Games</span
-                    ><span class="card-category-list-count">1</span></a
-                  >
-                </li>
-                <li class="card-category-list-item">
-                  <a class="card-category-list-link" href="/categories/Life/"
-                    ><span class="card-category-list-name">Life</span
-                    ><span class="card-category-list-count">6</span></a
-                  >
-                </li>
-                <li class="card-category-list-item">
-                  <a class="card-category-list-link" href="/categories/Movies/"
-                    ><span class="card-category-list-name">Movies</span
-                    ><span class="card-category-list-count">5</span></a
-                  >
-                </li>
-                <li class="card-category-list-item">
-                  <a class="card-category-list-link" href="/categories/Study/"
-                    ><span class="card-category-list-name">Study</span
-                    ><span class="card-category-list-count">4</span></a
-                  >
-                  <ul class="card-category-list child">
-                    <li class="card-category-list-item">
-                      <a
-                        class="card-category-list-link"
-                        href="/categories/Study/Course/"
-                        ><span class="card-category-list-name">Course</span
-                        ><span class="card-category-list-count">3</span></a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li class="card-category-list-item">
-                  <a class="card-category-list-link" href="/categories/music/"
-                    ><span class="card-category-list-name">music</span
-                    ><span class="card-category-list-count">1</span></a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="card-widget card-tags">
-              <div class="item-headline">
-                <i class="fas fa-tags"></i><span>Tags</span>
-              </div>
-              <div class="card-tag-cloud">
-                <a href="/tags/Study/" style="font-size: 1.4em; color: #99a5b6"
-                  >Study</a
-                >
-                <a href="/tags/Math/" style="font-size: 1.2em; color: #999da3"
-                  >Math</a
-                >
-                <a href="/tags/Games/" style="font-size: 1.1em; color: #999"
-                  >Games</a
-                >
-                <a href="/tags/Course/" style="font-size: 1.3em; color: #99a1ac"
-                  >Course</a
-                >
-                <a href="/tags/Movies/" style="font-size: 1.5em; color: #99a9bf"
-                  >Movies</a
-                >
-                <a href="/tags/music/" style="font-size: 1.1em; color: #999"
-                  >music</a
-                >
-                <a href="/tags/Coding/" style="font-size: 1.1em; color: #999"
-                  >Coding</a
-                >
-              </div>
-            </div>
-            <div class="card-widget card-archives">
-              <div class="item-headline">
-                <i class="fas fa-archive"></i><span>Archives</span>
-              </div>
-              <ul class="card-archive-list">
-                <li class="card-archive-list-item">
-                  <a class="card-archive-list-link" href="/archives/2024/06/"
-                    ><span class="card-archive-list-date">June 2024</span
-                    ><span class="card-archive-list-count">13</span></a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="card-widget card-webinfo">
-              <div class="item-headline">
-                <i class="fas fa-chart-line"></i><span>Info</span>
-              </div>
-              <div class="webinfo">
-                <div class="webinfo-item">
-                  <div class="item-name">Article :</div>
-                  <div class="item-count">13</div>
-                </div>
-                <div class="webinfo-item">
-                  <div class="item-name">Runtime :</div>
-                  <div
-                    class="item-count"
-                    id="runtimeshow"
-                    data-publishDate="2024-10-05T16:00:00.000Z"
-                  >
-                    <i class="fa-solid fa-spinner fa-spin"></i>
-                  </div>
-                </div>
-                <div class="webinfo-item">
-                  <div class="item-name">Total Count :</div>
-                  <div class="item-count">16.7k</div>
-                </div>
-                <div class="webinfo-item">
-                  <div class="item-name">UV :</div>
-                  <div class="item-count" id="busuanzi_value_site_uv">
-                    <i class="fa-solid fa-spinner fa-spin"></i>
-                  </div>
-                </div>
-                <div class="webinfo-item">
-                  <div class="item-name">PV :</div>
-                  <div class="item-count" id="busuanzi_value_site_pv">
-                    <i class="fa-solid fa-spinner fa-spin"></i>
-                  </div>
-                </div>
-                <div class="webinfo-item">
-                  <div class="item-name">Last Update :</div>
-                  <div
-                    class="item-count"
-                    id="last-push-date"
-                    data-lastPushDate="2024-07-06T01:24:27.538Z"
-                  >
-                    <i class="fa-solid fa-spinner fa-spin"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-      <footer id="footer">
-        <div id="footer-wrap">
-          <div class="copyright">&copy;2024 By Yedou37</div>
-          <div class="framework-info">
-            <span>Framework </span
-            ><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a
-            ><span class="footer-separator">|</span><span>Theme </span
-            ><a
-              target="_blank"
-              rel="noopener"
-              href="https://github.com/jerryc127/hexo-theme-butterfly"
-              >Butterfly</a
-            >
-          </div>
-        </div>
-      </footer>
-    </div>
-    <div id="rightside">
-      <div id="rightside-config-hide">
-        <button
-          id="darkmode"
-          type="button"
-          title="Toggle Between Light And Dark Mode"
-        >
-          <i class="fas fa-adjust"></i></button
-        ><button
-          id="hide-aside-btn"
-          type="button"
-          title="Toggle between Single-column and Double-column"
-        >
-          <i class="fas fa-arrows-alt-h"></i>
-        </button>
-      </div>
-      <div id="rightside-config-show">
-        <button id="rightside-config" type="button" title="Setting">
-          <i class="fas fa-cog fa-spin"></i></button
-        ><button id="go-up" type="button" title="Back To Top">
-          <span class="scroll-percent"></span><i class="fas fa-arrow-up"></i>
-        </button>
-      </div>
-    </div>
-    <div>
-      <script src="/js/utils.js"></script>
-      <script src="/js/main.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script>
-      <script
-        src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js"
-        type="module"
-      ></script>
-      <script>
-        function panguFn() {
-          if (typeof pangu === "object") pangu.autoSpacingPage();
-          else {
-            getScript(
-              "https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js"
-            ).then(() => {
-              pangu.autoSpacingPage();
-            });
-          }
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
         }
-
-        function panguInit() {
-          if (true) {
-            GLOBAL_CONFIG_SITE.isPost && panguFn();
-          } else {
-            panguFn();
-          }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
         }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
 
-        document.addEventListener("DOMContentLoaded", panguInit);
-      </script>
-      <div class="js-pjax">
-        <script>
-          window.typedJSFn = {
-            init: (str) => {
-              window.typed = new Typed(
-                "#subtitle",
-                Object.assign(
-                  {
-                    strings: str,
-                    startDelay: 300,
-                    typeSpeed: 150,
-                    loop: true,
-                    backSpeed: 50,
-                  },
-                  null
-                )
-              );
-            },
-            run: (subtitleType) => {
-              if (true) {
-                if (typeof Typed === "function") {
-                  subtitleType();
-                } else {
-                  getScript(
-                    "https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js"
-                  ).then(subtitleType);
-                }
-              } else {
-                subtitleType();
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
               }
-            },
-          };
-        </script>
-        <script>
-          function subtitleType() {
-            if (true) {
-              typedJSFn.init([
-                "TO SEE THE WORLD, THINGS DANGEROUS TO COME TO",
-                "TO SEE BEHIND WALLS ,TO DRAW CLOSER",
-                "TO FIND EACH OTHER AND TO FEEL",
-                "THAT IS THE PURPOSE OF LIFE",
-              ]);
-            } else {
-              document.getElementById("subtitle").textContent =
-                "TO SEE THE WORLD, THINGS DANGEROUS TO COME TO";
-            }
-          }
-          typedJSFn.run(subtitleType);
-        </script>
-      </div>
-      <script
-        id="click-heart"
-        src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js"
-        async="async"
-        mobile="false"
-      ></script>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"
-        media="print"
-        onload="this.media='all'"
-      />
-      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>
-      <script
-        async
-        data-pjax
-        src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
-      ></script>
-    </div>
-    <style>
-      [bg-lazy] {
-        background-image: none !important;
-        background-color: #eee !important;
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
       }
-    </style>
-    <script>
-      window.imageLazyLoadSetting = {
-        isSPA: false,
-        preloadRatio: 3,
-        processImages: null,
-      };
-    </script>
-    <script>
-      window.addEventListener("load", function () {
-        var t = /\.(gif|jpg|jpeg|tiff|png)$/i,
-          r = /^data:image\/[a-z]+;base64,/;
-        Array.prototype.slice
-          .call(document.querySelectorAll("img[data-original]"))
-          .forEach(function (a) {
-            var e = a.parentNode;
-            "A" === e.tagName &&
-              (e.href.match(t) || e.href.match(r)) &&
-              (e.href = a.dataset.original);
-          });
-      });
-    </script>
-    <script>
-      !(function (r) {
-        r.imageLazyLoadSetting.processImages = t;
-        var a = r.imageLazyLoadSetting.isSPA,
-          n = r.imageLazyLoadSetting.preloadRatio || 1,
-          d = o();
-        function o() {
-          var t = Array.prototype.slice.call(
-              document.querySelectorAll("img[data-original]")
-            ),
-            e = Array.prototype.slice.call(
-              document.querySelectorAll("[bg-lazy]")
-            );
-          return t.concat(e);
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
         }
-        function t(t) {
-          (a || t) && (d = o());
-          for (var e, i = 0; i < d.length; i++)
-            0 <= (e = (e = d[i]).getBoundingClientRect()).bottom &&
-              0 <= e.left &&
-              e.top <=
-                (r.innerHeight * n ||
-                  document.documentElement.clientHeight * n) &&
-              (function () {
-                var t,
-                  e,
-                  a,
-                  n,
-                  o = d[i];
-                (e = function () {
-                  (d = d.filter(function (t) {
-                    return o !== t;
-                  })),
-                    r.imageLazyLoadSetting.onImageLoaded &&
-                      r.imageLazyLoadSetting.onImageLoaded(o);
-                }),
-                  (t = o).dataset.loaded ||
-                    (t.hasAttribute("bg-lazy")
-                      ? (t.removeAttribute("bg-lazy"), e && e())
-                      : ((a = new Image()),
-                        (n = t.getAttribute("data-original")),
-                        (a.onload = function () {
-                          (t.src = n),
-                            t.removeAttribute("data-original"),
-                            t.setAttribute("data-loaded", !0),
-                            e && e();
-                        }),
-                        (a.onerror = function () {
-                          t.removeAttribute("data-original"),
-                            t.setAttribute("data-loaded", !1),
-                            (t.src = n);
-                        }),
-                        t.src !== n && (a.src = n)));
-              })();
-        }
-        function e() {
-          clearTimeout(t.tId), (t.tId = setTimeout(t, 500));
-        }
-        t(),
-          document.addEventListener("scroll", e),
-          r.addEventListener("resize", e),
-          r.addEventListener("orientationchange", e);
-      })(this);
-    </script>
-  </body>
-</html>
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
 
-<script>
-  var _hmt = _hmt || [];
-  (function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?7a6df9a0a3ae909d6f36f62e9955cd38";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/courses/"><i class="fa-fw fa-solid fa-school"></i><span> 课程学习</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fa-solid fa-toolbox"></i><span> 常用工具</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-brands fa-steam"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/cook/"><i class="fa-fw fa-solid fa-bowl-rice"></i><span> 做饭</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/MTG/"><i class="fa-fw fa-brands fa-wizards-of-the-coast"></i><span> MTG</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 读书</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Yedou37's Blog"><span class="site-name">Yedou37's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/courses/"><i class="fa-fw fa-solid fa-school"></i><span> 课程学习</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fa-solid fa-toolbox"></i><span> 常用工具</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-brands fa-steam"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/cook/"><i class="fa-fw fa-solid fa-bowl-rice"></i><span> 做饭</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/MTG/"><i class="fa-fw fa-brands fa-wizards-of-the-coast"></i><span> MTG</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 读书</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Yedou37's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/30ed07b.html" title="[课程笔记]2024春夏 ZJU 数据结构基础">[课程笔记]2024春夏 ZJU 数据结构基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-12T03:31:18.000Z" title="Created 2024-07-12 11:31:18">2024-07-12</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-12T04:20:08.500Z" title="Updated 2024-07-12 12:20:08">2024-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/">Study</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/Course/">Course</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Coding/">Coding</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Study/">Study</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Course/">Course</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Coding/">Coding</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">
+教师：朱建科
+TA：陈浩鹏
+讲授基本的数据结构定义、实施以及一些相关的简单算法(list, queue, stack, tree, graph, priority queue…)
+平时每节课有作业，加上三个 lab，分为normal（总分 25）和hard模式（总分 30）基本完成了就能接近满分（如果能重来，我一定选困难模式——能够弥补一点平时扣分（忘作业,ԾㅂԾ,）更容易拿到满分
+期末：考试注重理论，判断+选择+程序填空+一道函数题（二叉树的最大深度+用二维数组返回所有最大深度的路径） 相比图 的函数题要简单很多，不过做的时候还是绕了点路,ԾㅂԾ,，AC 的时候大概排名 80/599
+把数据结构分成基础（FDS）和进阶（ADS）部分，两个学期上完。相比清华一个学期“速通”数据结构还是友好一点。通过学习，可以说把基础数据结构内涵以及算法实施都掌握地十分牢靠
+
+ALGO Analysis
+
+Definition (asymptotic notation)
+N: sufficient large
+
+Big-Oh O( f(N) )
+T(N) = O( f(N) ) if there ar ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/e7713113.html" title="[课程笔记]UCB CS61B">[课程笔记]UCB CS61B</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-12T03:30:24.000Z" title="Created 2024-07-12 11:30:24">2024-07-12</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-12T04:28:44.260Z" title="Updated 2024-07-12 12:28:44">2024-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/">Study</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/Course/">Course</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Coding/">Coding</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Study/">Study</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Course/">Course</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Coding/">Coding</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">1.2 Defining and Using Class
+javac： compile the java file to class file
+java : run the compiled program
+
+why make a class file?
+
+type check
+‘simpler’ to execute, distributed code is faster
+protects your intellectual, NO need to give out source code
+
+
+for every single dog make a new class ?
+classe can contain not just functions, but also data
+
+
+static method and instant method
+
+
+some classes never instantiated like **math** class
+
+i = 0 bark
+i = 1 woof
+i = 2 woof
+i = 3 ? not initialized
+i = 3 jav ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/941ac894.html" title="[课程笔记]MIT IAP Web.lab">[课程笔记]MIT IAP Web.lab</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-12T03:29:58.000Z" title="Created 2024-07-12 11:29:58">2024-07-12</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-12T04:23:44.517Z" title="Updated 2024-07-12 12:23:44">2024-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/">Study</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/Course/">Course</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Coding/">Coding</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Study/">Study</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Course/">Course</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Coding/">Coding</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/HTML/">HTML</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/CSS/">CSS</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/JavaScript/">JavaScript</a></span></div><div class="content">Introduction
+client
+server
+Webpage files
+
+HTML
+CSS
+JS
+Assets
+
+Git basics
+
+HTML/CSS
+HTML: structure - nested boxes
+CSS: functionality - a list of descriptions
+Opening tag and closing tag
+
+12345678910111213141516171819&lt;html&gt;  root of html doc  &lt;head&gt;    doc info    &lt;body&gt;      &lt;h1&gt;        &lt;h2&gt;          &lt;h3&gt;            ... Header            &lt;p&gt;paragraph&lt;/p&gt;            &lt;div&gt;              generic block section &lt;span&gt; generic inline section & ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/8999f088.html" title="[速通笔记]2024春夏-大学物理（乙）I">[速通笔记]2024春夏-大学物理（乙）I</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-06-25T03:41:06.000Z" title="Created 2024-06-25 11:41:06">2024-06-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-12T04:15:23.030Z" title="Updated 2024-07-12 12:15:23">2024-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/">Study</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/Course/">Course</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Study/">Study</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Course/">Course</a></span></div><div class="content">静电场
+库仑定律
+F=kq1q2r2,k=14πε0F = k \frac{q_1 q_2}{r^2}
+,k = \frac{1}{4\pi \varepsilon_0}
+F=kr2q1​q2​​,k=4πε0​1​
+电荷可以表示为体密度、面密度、线密度
+电场强度 放在该点的单位点电荷所受的力
+E⃗=F⃗q0=14πε0qr2r⃗\vec E=\frac{\vec F}{q_{0}}=\frac{1}{4\pi \varepsilon_0}\frac{q}{r^{2}}\vec r
+E=q0​F​=4πε0​1​r2q​r
+电偶极子 两个等值异号的电荷所组成的系统
+电偶极矩 p⃗=q⋅l⃗\vec p=q\cdot \vec lp​=q⋅l 方向从负电荷指向正电荷 实际计算时 l 相比于 r 可以忽略
+几个电场强度有关的结论
+
+无限长均匀带电细棒外一点的场强Ey=λ2πε0r,Ex=0E_{y} = \frac{\lambda}{2\pi\varepsilon_0 r},E_{x}=0
+Ey​=2πε0​rλ​,Ex​=0
+
+半无限长的均匀带电细棒 在端点处垂直于细棒位置的场强Ey=λ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/334e4197.html" title="[速通笔记]2024春夏-微积分（甲）II">[速通笔记]2024春夏-微积分（甲）II</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-06-25T03:40:51.000Z" title="Created 2024-06-25 11:40:51">2024-06-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-12T04:16:04.287Z" title="Updated 2024-07-12 12:16:04">2024-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/">Study</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/Course/">Course</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Study/">Study</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Course/">Course</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Math/">Math</a></span></div><div class="content">
+教师: 张泽银
+TA: 陈浩鹏
+内容：级数、偏导数、立体几何、多元函数、多重积分
+助教是真爹！平时分基本给满，小测会调分，只有在三次小测时点名。作业交够即可（我最后一周上交了一个学期的作业 ━━(￣ー￣*|||━━
+虽然自认为对于这部分微积分的内容理解没有十分透彻，但好在对于各种概念和题型比较熟悉。最后成绩真的出乎意料。
+
+求某点的方向导数 求某点的偏导数 判断某点是否可微
+方向导数
+
+方向导数的定义 在该点的梯度不好求的时候使用Duf=lim⁡h→0f(x0+ah,y0+bh,z0+ch)−f(x0,y0,z0)hD_u f = \lim_{h \to 0} \frac{f(x_0 + ah, y_0 + bh, z_0 + ch) - f(x_0, y_0, z_0)}{h}
+Du​f=h→0lim​hf(x0​+ah,y0​+bh,z0​+ch)−f(x0​,y0​,z0​)​
+
+该点的梯度乘上方向向量（单位）Duf=∇f⋅uD_u f = \nabla f \cdot u
+Du​f=∇f⋅u
+
+
+偏导数（定义）
+∂f∂x(x0,y0)=lim⁡h→0f(x0+h,y0)−f( ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/9ca104ff.html" title="[速通笔记]2024春夏-离散数学">[速通笔记]2024春夏-离散数学</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-06-25T03:40:30.000Z" title="Created 2024-06-25 11:40:30">2024-06-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-12T04:15:35.034Z" title="Updated 2024-07-12 12:15:35">2024-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/">Study</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Study/Course/">Course</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Study/">Study</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Course/">Course</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Math/">Math</a></span></div><div class="content">
+教师：林兰芬
+TA：
+
+这个笔记纯属期末补天所用，基本上在一个星期里写成。（凑数。。。）下面是一些更加详实的笔记
+https://noughtq.github.io/notebook/math/dm/index.html
+https://oneko.zone/zju/dm/#before-start
+https://www.yuque.com/linguisty/zju_courses/discrete
+
+Logic and Proofs
+Propositional Equivalences
+p→q≡¬p∨qp\rightarrow{q}\equiv\neg{p}\lor{q}p→q≡¬p∨q
+p↔q≡(p→q)∧(q→p)p\leftrightarrow{q}\equiv(p\rightarrow{q})\land(q\rightarrow{p})p↔q≡(p→q)∧(q→p)
+De Morgan’s Laws
+¬(P∧Q)≡¬P∨¬Q\neg (P \land Q) \equiv \neg P \lor \neg Q¬(P∧Q)≡¬P∨¬Q
+¬(P∨Q)≡¬P∧¬Q\neg (P ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/f9ab4104.html" title="hexo+butterfly建站中遇到的问题&amp;解决/魔改">hexo+butterfly建站中遇到的问题&amp;解决/魔改</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-06-22T12:04:39.000Z" title="Created 2024-06-22 20:04:39">2024-06-22</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-12T04:00:16.437Z" title="Updated 2024-07-12 12:00:16">2024-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Coding/">Coding</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Coding/Study/">Study</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Study/">Study</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Coding/">Coding</a></span></div><div class="content">
+
+
+网页中用 URL 加载豆瓣图片被拒绝(403)
+在豆瓣上爬取电影海报图片的 URL，通过链接直接访问可以正常加载
+但是使用 butterfly 主题的友链卡片功能(js+html)时无法加载图片
+原因是网站设置了防盗链的策略，会在后台判断请求的 Referrer 属性是不是来自于一个非本域名的网站，如果来源不是本域名就返回 403 forbidden。
+解决：
+修改 butterfly 主题下 friendship link 的 js 脚本
+node_modules\hexo-theme-butterfly\scripts\tag\flink.js
+12345678910111213141516i.link_list.forEach((j) =&gt; &#123;  listResult += `          &lt;div class=&quot;flink-list-item&quot;&gt;            &lt;a href=&quot;$&#123;j.link&#125;&quot; title=&quot;$&#123;j.name&#125;&q ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/177d99cd.html" title="孙楠">孙楠</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-06-10T13:19:44.000Z" title="Created 2024-06-10 21:19:44">2024-06-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-06T10:53:36.096Z" title="Updated 2024-07-06 18:53:36">2024-07-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/music/">music</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/music/">music</a></span></div><div class="content">
+
+
+    
+        .rounded-title {
+            color: gray;
+            border-radius: 10px;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            filter: invert(100%); /* 根据系统设置自动转换黑白 */
+            font-size: 30px;    
+        }
+    
+
+
+
+无名的人【声生不息】- 陈楚生 孙楠
+
+
+
+
+致所有顶天立地却平凡普通的无名的人
+
+无名的人啊 我敬你一杯酒
+敬你的沉默 和每一声怒吼
+敬你弯着腰 上山往高处走
+头顶 苍穹 努力地生活
+
+
+人世间【声生不息3】- 韩红 孙楠
+
+
+
+
+
+孙楠+韩红 无可挑剔的演唱和和声 无敌 B4
+
+也祝你不忘少年样
+也 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ef3e049a.html" title="jay">jay</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-06-10T13:19:21.000Z" title="Created 2024-06-10 21:19:21">2024-06-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-06T03:59:09.803Z" title="Updated 2024-07-06 11:59:09">2024-07-06</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/4a17b156.html" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-06-10T01:02:42.764Z" title="Created 2024-06-10 09:02:42">2024-06-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-06T03:59:09.799Z" title="Updated 2024-07-06 11:59:09">2024-07-06</time></span></div><div class="content"></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yedou37</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yedou37"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/30ed07b.html" title="[课程笔记]2024春夏 ZJU 数据结构基础">[课程笔记]2024春夏 ZJU 数据结构基础</a><time datetime="2024-07-12T03:31:18.000Z" title="Created 2024-07-12 11:31:18">2024-07-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/e7713113.html" title="[课程笔记]UCB CS61B">[课程笔记]UCB CS61B</a><time datetime="2024-07-12T03:30:24.000Z" title="Created 2024-07-12 11:30:24">2024-07-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/941ac894.html" title="[课程笔记]MIT IAP Web.lab">[课程笔记]MIT IAP Web.lab</a><time datetime="2024-07-12T03:29:58.000Z" title="Created 2024-07-12 11:29:58">2024-07-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/8999f088.html" title="[速通笔记]2024春夏-大学物理（乙）I">[速通笔记]2024春夏-大学物理（乙）I</a><time datetime="2024-06-25T03:41:06.000Z" title="Created 2024-06-25 11:41:06">2024-06-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/334e4197.html" title="[速通笔记]2024春夏-微积分（甲）II">[速通笔记]2024春夏-微积分（甲）II</a><time datetime="2024-06-25T03:40:51.000Z" title="Created 2024-06-25 11:40:51">2024-06-25</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Coding/"><span class="card-category-list-name">Coding</span><span class="card-category-list-count">4</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Coding/Study/"><span class="card-category-list-name">Study</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Study/"><span class="card-category-list-name">Study</span><span class="card-category-list-count">6</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Study/Course/"><span class="card-category-list-name">Course</span><span class="card-category-list-count">6</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/music/"><span class="card-category-list-name">music</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Course/" style="font-size: 1.4em; color: #99a5b6">Course</a> <a href="/tags/JavaScript/" style="font-size: 1.1em; color: #999">JavaScript</a> <a href="/tags/Study/" style="font-size: 1.5em; color: #99a9bf">Study</a> <a href="/tags/music/" style="font-size: 1.1em; color: #999">music</a> <a href="/tags/Java/" style="font-size: 1.1em; color: #999">Java</a> <a href="/tags/HTML/" style="font-size: 1.1em; color: #999">HTML</a> <a href="/tags/Math/" style="font-size: 1.2em; color: #999da3">Math</a> <a href="/tags/CSS/" style="font-size: 1.1em; color: #999">CSS</a> <a href="/tags/Coding/" style="font-size: 1.3em; color: #99a1ac">Coding</a> <a href="/tags/C/" style="font-size: 1.1em; color: #999">C</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">July 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">June 2024</span><span class="card-archive-list-count">7</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">10</div></div><div class="webinfo-item"><div class="item-name">Runtime :</div><div class="item-count" id="runtimeshow" data-publishDate="2024-10-05T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Total Count :</div><div class="item-count">21.3k</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-12T04:28:51.128Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Yedou37</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["TO SEE THE WORLD, THINGS DANGEROUS TO COME TO","TO SEE BEHIND WALLS ,TO DRAW CLOSER","TO FIND EACH OTHER AND TO FEEL","THAT IS THE PURPOSE OF LIFE"])
+  } else {
+    document.getElementById("subtitle").textContent = "TO SEE THE WORLD, THINGS DANGEROUS TO COME TO"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 3,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,d=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=o());for(var e,i=0;i<d.length;i++)0<=(e=(e=d[i]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,a,n,o=d[i];e=function(){d=d.filter(function(t){return o!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(o)},(t=o).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,n=t.getAttribute("data-original"),a.onload=function(){t.src=n,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=n},t.src!==n&&(a.src=n)))}()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)}(this);</script></body></html>
