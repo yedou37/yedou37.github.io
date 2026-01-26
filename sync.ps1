@@ -17,6 +17,6 @@ cd "D:\blog\my-blog"
 # git pull origin main
 
 git add .
-$commitMsg = "chore: 自动化更新笔记 $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+$commitMsg = "chore: auto-update $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
 git commit -m $commitMsg
 git push origin main
