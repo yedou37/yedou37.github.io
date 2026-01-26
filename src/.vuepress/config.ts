@@ -9,7 +9,10 @@ export default defineUserConfig({
   lang: "zh-CN",
   title: "Yedou's Notebook", // 修改为你想要的标题
   description: "记录面试复习与各个课程大作业的个人笔记",
-
+  head: [
+    // 设置浏览器标签页的图标
+    ["link", { rel: "icon", href: "/logo.jpg" }],
+  ],
   theme,
 
   // 预读取资源，一般保持默认即可
