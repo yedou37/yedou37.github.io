@@ -1,4 +1,4 @@
 ---
 title: cpp知识
-icon: binary
+icon: code-xml
 ---
