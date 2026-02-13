@@ -58,12 +58,12 @@ export default hopeTheme({
     sup: true,
     tabs: true,
     tasklist: true,
+    math: true,
     // 开启 Hint 插件，这是支持 Obsidian [!info] 等 Callouts 的核心
     hint: true,
   },
 
   plugins: {
-    // 关闭原本开启的博客插件，让界面回归文档笔记风格
     blog: false,
 
     components: {
