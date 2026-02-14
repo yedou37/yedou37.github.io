@@ -1,6 +1,6 @@
 ---
 title: cpp知识
-icon: code-xml
+icon: thumbs-up
 ---
 
 ---
